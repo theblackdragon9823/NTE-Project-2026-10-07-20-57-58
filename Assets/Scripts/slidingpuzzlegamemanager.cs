@@ -18,7 +18,14 @@ public class slidingpuzzlegamemanager : MonoBehaviour
                 Transform piece = Instantiate(piecePrefab, gameTransform);
                 // centre the puzzle on x and y axes
                 piece.localPosition = new Vector3(-1 + (2 * width * col) + width, +1 - (2 * width * row) - width, 0);
-                piece.localScale = 
+                piece.localScale = ((2 * width) - gapThickness) * Vector3.one;
+                piece.name = $"{(row * size) + col}";
+                // empty on bottom right
+                if ((row == size - 1) && (col == size - 1))
+                {
+                    emptylocation = (size * size) - 1;
+                    piece.gameObject.SetActive(false);
+                }
             
             
             }
